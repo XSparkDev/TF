@@ -29,7 +29,7 @@ export function IndustriesGrid() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-4 text-foreground"
+            className="text-3xl md:text-4xl font-bold mb-4 text-foreground"
             initial={shouldReduceMotion ? undefined : { x: -40, opacity: 0 }}
             whileInView={shouldReduceMotion ? undefined : { x: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.6 }}

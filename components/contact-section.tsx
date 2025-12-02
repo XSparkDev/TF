@@ -8,7 +8,7 @@ export function ContactSection() {
     <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Contact Us</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Contact Us</h2>
           <p className="text-muted-foreground text-lg">
             Ready to improve your environmental footprint? Contact us for a waste assessment or to learn more about our
             services.

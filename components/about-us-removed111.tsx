@@ -3,7 +3,7 @@
 import { Shield, Users, Award, Target } from "lucide-react"
 import { motion, useReducedMotion } from "framer-motion"
 
-export function AboutUs() {
+export function AboutUsRemoved111() {
   const shouldReduceMotion = useReducedMotion()
 
   const values = [
@@ -43,7 +43,7 @@ export function AboutUs() {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div>
             <motion.h2
-              className="text-4xl md:text-5xl font-bold mb-6 text-foreground"
+              className="text-3xl md:text-4xl font-bold mb-6 text-foreground"
               initial={shouldReduceMotion ? undefined : { x: -40, opacity: 0 }}
               whileInView={shouldReduceMotion ? undefined : { x: 0, opacity: 1 }}
               viewport={{ once: true, amount: 0.6 }}

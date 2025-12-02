@@ -6,7 +6,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.2 },
   },
 }
 
@@ -19,7 +19,7 @@ export function WasteStrategy() {
   const shouldReduceMotion = useReducedMotion()
 
   const baseTransition = {
-    duration: shouldReduceMotion ? 0 : 0.3,
+    duration: shouldReduceMotion ? 0 : 0.8,
     ease: [0.4, 0, 0.2, 1],
   }
 
@@ -38,7 +38,7 @@ export function WasteStrategy() {
       >
         <motion.h2
           id="waste-strategy-heading"
-          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-foreground"
           variants={itemVariants}
           transition={baseTransition}
         >
@@ -48,7 +48,7 @@ export function WasteStrategy() {
         <motion.p
           className="text-muted-foreground text-base md:text-lg max-w-3xl mb-10 leading-relaxed"
           variants={itemVariants}
-          transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.3 }}
+          transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.6 }}
         >
           Tshegofentse&apos;s integrated waste management strategy focuses on environmental sustainability, circular
           economy principles, zero waste to landfill, and zero liquid discharge. We design solutions that minimize
@@ -58,16 +58,17 @@ export function WasteStrategy() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {/* 1. Environmental Sustainability */}
           <motion.div
-            className="strategy-card bg-muted text-foreground"
+            className="strategy-card strategy-card--shine text-white"
+            style={{ backgroundColor: "#9DC13D" }}
             variants={itemVariants}
             initial={shouldReduceMotion ? undefined : "hidden"}
             whileInView={shouldReduceMotion ? undefined : "visible"}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0 }}
+            transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.2 }}
           >
             <div className="strategy-card__body">
               <h3 className="text-lg font-semibold mb-2">Environmental Sustainability</h3>
-              <p className="text-sm md:text-base text-muted-foreground">
+              <p className="text-sm md:text-base text-white/90">
               Prioritising solutions that protect natural ecosystems, reduce emissions, and support long-term
               environmental health.
               </p>
@@ -77,12 +78,12 @@ export function WasteStrategy() {
           {/* 2. Circular Economy */}
           <motion.div
             className="strategy-card strategy-card--shine text-white"
-            style={{ backgroundColor: "#2D9B81" }}
+            style={{ backgroundColor: "#9DC13D" }}
             variants={itemVariants}
             initial={shouldReduceMotion ? undefined : "hidden"}
             whileInView={shouldReduceMotion ? undefined : "visible"}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.1 }}
+            transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.4 }}
           >
             <div className="strategy-card__body">
               <h3 className="text-lg font-semibold mb-2">Circular Economy</h3>
@@ -95,12 +96,12 @@ export function WasteStrategy() {
           {/* 3. Zero Waste to Landfill */}
           <motion.div
             className="strategy-card strategy-card--shine strategy-card--ripple text-white"
-            style={{ backgroundColor: "#2D9B81" }}
+            style={{ backgroundColor: "#9DC13D" }}
             variants={itemVariants}
             initial={shouldReduceMotion ? undefined : "hidden"}
             whileInView={shouldReduceMotion ? undefined : "visible"}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.2 }}
+            transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.6 }}
           >
             <div className="strategy-card__body">
               <h3 className="text-lg font-semibold mb-2">Zero Waste to Landfill</h3>
@@ -114,12 +115,12 @@ export function WasteStrategy() {
           {/* 4. Zero Liquid Discharge */}
           <motion.div
             className="strategy-card strategy-card--shine text-white"
-            style={{ backgroundColor: "#B4D333" }}
+            style={{ backgroundColor: "#9DC13D" }}
             variants={itemVariants}
             initial={shouldReduceMotion ? undefined : "hidden"}
             whileInView={shouldReduceMotion ? undefined : "visible"}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.3 }}
+            transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.8 }}
           >
             <div className="strategy-card__body">
               <h3 className="text-lg font-semibold mb-2">Zero Liquid Discharge</h3>

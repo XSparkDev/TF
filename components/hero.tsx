@@ -3,6 +3,7 @@
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import Link from "next/link"
 import { motion, useReducedMotion } from "framer-motion"
 
 export function Hero() {
@@ -10,7 +11,7 @@ export function Hero() {
 
   return (
     <motion.section
-      className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden"
+      className="relative min-h-[600px] md:min-h-[700px] flex items-center md:items-start overflow-hidden"
       initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
       animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
       transition={shouldReduceMotion ? undefined : { duration: 0.8, ease: "easeOut" }}
@@ -26,9 +27,9 @@ export function Hero() {
         <div className="absolute inset-0 bg-foreground/60 hero-gradient-overlay" />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-12">
-          <div className="max-w-5xl text-left space-y-6 flex-1">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 md:pt-8">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+          <div className="max-w-5xl text-left space-y-6 flex-1 mt-[2cm] md:mt-0">
             <motion.h1
               className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight text-background"
               initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
@@ -69,26 +70,28 @@ export function Hero() {
               Save Your Community, Save Your Planet
             </motion.p>
 
-            <div className="flex items-center gap-4 pt-4">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 h-12 text-base font-medium animated-btn"
-              >
-                Learn More
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+            <div className="flex items-center justify-center md:justify-start gap-4 pt-4">
+              <Link href="/about">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 h-12 text-base font-medium animated-btn"
+                >
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </div>
 
           <motion.div
-            className="relative md:flex-shrink-0"
+            className="relative hidden md:block md:flex-shrink-0"
             initial={shouldReduceMotion ? undefined : { opacity: 0, x: 40 }}
             animate={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
             transition={shouldReduceMotion ? undefined : { duration: 0.8, ease: "easeOut", delay: 0.4 }}
           >
-            <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto md:mx-0">
+            <div className="relative w-[640px] h-[640px] md:w-[800px] md:h-[800px] mx-auto md:mx-0">
               <Image
-                src="/111pic2.jpg"
+                src="/Tshegofentse final logo-03.png"
                 alt="Tshegofentse Logo"
                 fill
                 className="object-contain"

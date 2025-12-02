@@ -46,16 +46,16 @@ export function StepwiseProcess() {
       initial={shouldReduceMotion ? undefined : { opacity: 0, y: 40 }}
       whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={shouldReduceMotion ? undefined : { duration: 0.7, ease: "easeOut" }}
+      transition={shouldReduceMotion ? undefined : { duration: 1.2, ease: "easeOut" }}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-4 text-foreground"
+            className="text-3xl md:text-4xl font-bold mb-4 text-foreground"
             initial={shouldReduceMotion ? undefined : { x: -40, opacity: 0 }}
             whileInView={shouldReduceMotion ? undefined : { x: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.7 }}
-            transition={shouldReduceMotion ? undefined : { duration: 0.6, ease: "easeOut" }}
+            transition={shouldReduceMotion ? undefined : { duration: 1.0, ease: "easeOut" }}
           >
             OUR UNIQUE APPROACH TO WASTE MANAGEMENT
           </motion.h2>
@@ -64,7 +64,7 @@ export function StepwiseProcess() {
             initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
             whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
-            transition={shouldReduceMotion ? undefined : { duration: 0.5, ease: "easeOut", delay: 0.05 }}
+            transition={shouldReduceMotion ? undefined : { duration: 0.8, ease: "easeOut", delay: 0.1 }}
           >
             WASTE MANAGEMENT: A STEPWISE APPROACH
           </motion.p>
@@ -73,7 +73,7 @@ export function StepwiseProcess() {
             initial={shouldReduceMotion ? undefined : { opacity: 0, y: 16 }}
             whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
-            transition={shouldReduceMotion ? undefined : { duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            transition={shouldReduceMotion ? undefined : { duration: 1.0, ease: "easeOut", delay: 0.2 }}
           >
             By taking a step-by-step approach to waste management, we ensure efficient, effective, and consistent
             services. Our strategy leaves waste disposal as the last option.
@@ -91,7 +91,7 @@ export function StepwiseProcess() {
               transition={
                 shouldReduceMotion
                   ? undefined
-                  : { duration: 0.5, ease: "easeOut", delay: 0.1 + index * 0.1 }
+                  : { duration: 0.9, ease: "easeOut", delay: 0.2 + index * 0.15 }
               }
               whileHover={
                 shouldReduceMotion
@@ -110,7 +110,7 @@ export function StepwiseProcess() {
                   transition={
                     shouldReduceMotion
                       ? undefined
-                      : { duration: 0.4, type: "spring", stiffness: 260, damping: 18, delay: 0.15 + index * 0.08 }
+                      : { duration: 0.7, type: "spring", stiffness: 200, damping: 20, delay: 0.3 + index * 0.12 }
                   }
                 >
                   <CheckCircle2 className="h-6 w-6 text-primary opacity-80 group-hover:opacity-100 transition-opacity" />
