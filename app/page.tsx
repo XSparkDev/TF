@@ -3,7 +3,7 @@ import { Hero } from "@/components/hero"
 import { WasteStrategy } from "@/components/waste-strategy"
 import { ServicesSectionNew } from "@/components/services-section-new"
 import { IndustriesSectionNew } from "@/components/industries-section-new"
-import { StepwiseApproachSection } from "@/components/stepwise-approach-section"
+import { CircularProcessFlow } from "@/components/circular-process-flow"
 import { SafetySection } from "@/components/safety-section"
 import { HazardSymbolsSection } from "@/components/hazard-symbols-section"
 import { ComplianceSection } from "@/components/compliance-section"
@@ -21,7 +21,7 @@ export default function Home() {
       <StepwiseProcess />
       <ServicesSectionNew />
       <IndustriesSectionNew />
-      <StepwiseApproachSection />
+      <CircularProcessFlow />
       <SafetySection />
       <HazardSymbolsSection />
       <ComplianceSection />

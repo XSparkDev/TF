@@ -221,7 +221,7 @@ function ProcessStep({
             shouldReduceMotion
               ? undefined
               : {
-                  scale: isActive ? [1, 1.1, 1] : isHighlightedStep ? 1.05 : 1,
+                  scale: isHighlightedStep ? 1.05 : 1,
                   opacity: 1,
                 }
           }
@@ -235,6 +235,7 @@ function ProcessStep({
             },
             opacity: { delay: animationDelay, duration: 0.4 },
           }}
+          whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
         >
           {/* Gradient for number circle */}
           <defs>
