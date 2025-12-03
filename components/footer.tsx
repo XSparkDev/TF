@@ -85,9 +85,9 @@ export function Footer() {
 
         <div className="border-t border-background/20 pt-6 flex items-center justify-between">
           <p className="text-xs md:text-sm text-background/60">Copyrights@tshegofentse.co.za</p>
-          <div className="relative h-12 w-32">
+          <div className="relative h-24 w-80 md:h-32 md:w-[28rem]">
             <Image
-              src="/newlogo1.png"
+              src="/ChatGPT Image Dec 2, 2025, 02_30_12 PM.png"
               alt="Tshegofentse"
               fill
               className="object-contain"

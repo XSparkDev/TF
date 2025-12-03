@@ -10,7 +10,7 @@ const steps = [
     id: 1,
     number: 1,
     title: "Waste Assessment",
-    solid: false,
+    solid: true,
     color: "#ef4444", // Red
     subLabels: [],
   },
@@ -37,7 +37,7 @@ const steps = [
     id: 4,
     number: 4,
     title: "Beneficiation",
-    solid: false,
+    solid: true,
     color: "#22c55e", // Green
     subLabels: [{ text: "Waste Exchange", position: "below" }],
   },
@@ -45,7 +45,7 @@ const steps = [
     id: 5,
     number: 5,
     title: "Chemical Treatment",
-    solid: false,
+    solid: true,
     color: "#06b6d4", // Cyan
     subLabels: [],
   },
@@ -269,10 +269,10 @@ function ProcessStep({
 
         {/* Step card */}
         <motion.rect
-          x={position.x - radius * 0.2}
-          y={position.y - radius * 0.1}
-          width={radius * 0.4}
-          height={radius * 0.2}
+          x={position.x - radius * 0.22}
+          y={position.y - radius * 0.12}
+          width={radius * 0.44}
+          height={radius * 0.24}
           rx={12}
           fill="white"
           stroke={step.color}
@@ -300,10 +300,10 @@ function ProcessStep({
           }}
         />
 
-        {/* Step title */}
+        {/* Step title - properly centered with good padding */}
         <text
           x={position.x}
-          y={position.y + radius * 0.02}
+          y={position.y - radius * 0.02}
           textAnchor="middle"
           dominantBaseline="middle"
           fontSize={radius * 0.05}
@@ -314,7 +314,7 @@ function ProcessStep({
         {step.title.split(" ").length > 1 && (
           <text
             x={position.x}
-            y={position.y + radius * 0.08}
+            y={position.y + radius * 0.05}
             textAnchor="middle"
             dominantBaseline="middle"
             fontSize={radius * 0.05}
@@ -520,37 +520,37 @@ export function CircularProcessFlow() {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Title */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12 px-4"
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: -20 }}
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+          <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 text-gray-900 leading-tight">
             OUR STEPWISE APPROACH TO WASTE MANAGEMENT
           </h2>
-          <p className="text-base uppercase tracking-[0.2em] text-primary mb-3">
+          <p className="text-sm md:text-base uppercase tracking-[0.2em] text-primary mb-3">
             WASTE MANAGEMENT: A STEPWISE APPROACH
           </p>
         </motion.div>
 
-        {/* Play Animation Button */}
-        <div className="flex justify-center mb-8">
+        {/* Play Animation Button - Hidden on mobile */}
+        <div className="hidden md:flex justify-center mb-6 md:mb-8 px-4">
           <motion.button
             onClick={handlePlayAnimation}
-            className="px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-lg"
+            className="px-5 py-2.5 md:px-6 md:py-3 bg-primary text-primary-foreground rounded-full font-semibold flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-lg text-sm md:text-base"
             whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
             whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
           >
             {isAnimating ? (
               <>
                 <RotateCcw className="w-5 h-5" />
-                Restart Animation
+                Restart Process
               </>
             ) : (
               <>
                 <Play className="w-5 h-5" />
-                Play Animation
+                Restart Process
               </>
             )}
           </motion.button>
@@ -731,47 +731,61 @@ export function CircularProcessFlow() {
         </div>
 
         {/* Mobile Vertical Layout */}
-        <div className="md:hidden space-y-6">
+        <div className="md:hidden space-y-6 max-w-md mx-auto px-4">
           {steps.map((step, index) => (
             <motion.div
               key={step.id}
-              className="flex items-center gap-4"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, x: -20 }}
-              whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              className="w-full"
+              initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              whileInView={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: index * 0.1, duration: 0.4 }}
             >
-              {/* Number circle */}
+              {/* Step card - full width */}
               <div
-                className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg"
-                style={{
-                  background: `linear-gradient(135deg, ${step.color}, ${step.color}dd)`,
-                }}
-              >
-                {step.number}
-              </div>
-
-              {/* Step card */}
-              <div
-                className={`flex-1 p-4 rounded-xl bg-white shadow-lg ${
+                className={`w-full p-5 rounded-lg bg-white shadow-md ${
                   step.solid ? "border-2" : "border-2 border-dashed"
                 }`}
                 style={{
                   borderColor: step.color,
                 }}
               >
-                <h3 className="font-bold text-gray-800 mb-1">{step.title}</h3>
+                {/* Number and title row */}
+                <div className="flex items-center gap-3 mb-3">
+                  <div
+                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-sm"
+                    style={{
+                      background: `linear-gradient(135deg, ${step.color}, ${step.color}dd)`,
+                    }}
+                  >
+                    {step.number}
+                  </div>
+                  <h3 className="font-bold text-gray-800 text-lg flex-1">{step.title}</h3>
+                </div>
+
+                {/* Sub-labels above */}
+                {step.subLabels
+                  .filter((l) => l.position === "above")
+                  .length > 0 && (
+                  <div className="mb-2">
+                    {step.subLabels
+                      .filter((l) => l.position === "above")
+                      .map((label, i) => (
+                        <span
+                          key={i}
+                          className="text-xs text-gray-600 font-medium mr-2 px-2 py-1 bg-gray-100 rounded"
+                        >
+                          {label.text}
+                        </span>
+                      ))}
+                  </div>
+                )}
+
+                {/* Sub-labels below */}
                 {step.subLabels
                   .filter((l) => l.position === "below")
                   .map((label, i) => (
-                    <p key={i} className="text-sm text-gray-600 mt-1">
-                      {label.text}
-                    </p>
-                  ))}
-                {step.subLabels
-                  .filter((l) => l.position === "above")
-                  .map((label, i) => (
-                    <p key={i} className="text-xs text-gray-600 mb-1">
+                    <p key={i} className="text-sm text-gray-600 mt-2">
                       {label.text}
                     </p>
                   ))}
@@ -780,10 +794,10 @@ export function CircularProcessFlow() {
               {/* Arrow (except last) */}
               {index < steps.length - 1 && (
                 <motion.div
-                  className="flex-shrink-0"
-                  initial={shouldReduceMotion ? undefined : { opacity: 0 }}
-                  whileInView={shouldReduceMotion ? undefined : { opacity: 1 }}
-                  viewport={{ once: true }}
+                  className="flex justify-center my-2"
+                  initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+                  whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1 }}
+                  viewport={{ once: true, amount: 0.2 }}
                   transition={{ delay: index * 0.1 + 0.2, duration: 0.3 }}
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -803,7 +817,7 @@ export function CircularProcessFlow() {
 
         {/* Tagline */}
         <motion.p
-          className="text-center max-w-4xl mx-auto mt-16 mb-8 text-lg text-gray-700 leading-relaxed"
+          className="text-center max-w-4xl mx-auto mt-12 md:mt-16 mb-6 md:mb-8 text-base md:text-lg text-gray-700 leading-relaxed px-4"
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -813,11 +827,11 @@ export function CircularProcessFlow() {
         </motion.p>
 
         {/* Bullet Points */}
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-4xl mx-auto space-y-3 md:space-y-4 px-4">
           {bulletPoints.map((point, index) => (
             <motion.div
               key={index}
-              className="flex items-start gap-4"
+              className="flex items-start gap-3 md:gap-4"
               initial={shouldReduceMotion ? undefined : { opacity: 0, x: -20 }}
               whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -840,7 +854,7 @@ export function CircularProcessFlow() {
                   <Check className="w-4 h-4 text-white" />
                 </motion.div>
               </div>
-              <p className="text-base text-gray-700 pt-0.5">{point}</p>
+              <p className="text-sm md:text-base text-gray-700 pt-0.5 leading-relaxed">{point}</p>
             </motion.div>
           ))}
         </div>

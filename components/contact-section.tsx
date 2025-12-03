@@ -57,13 +57,13 @@ export function ContactSection() {
                   <label htmlFor="name" className="text-sm font-medium">
                     Name
                   </label>
-                  <Input id="name" placeholder="John Doe" className="bg-background" />
+                  <Input id="name" placeholder="Jabulani Sibiya" className="bg-background" />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium">
                     Email
                   </label>
-                  <Input id="email" type="email" placeholder="john@company.com" className="bg-background" />
+                  <Input id="email" type="email" placeholder="jabulani@company.co.za" className="bg-background" />
                 </div>
               </div>
               <div className="space-y-2">

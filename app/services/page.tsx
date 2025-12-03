@@ -9,7 +9,7 @@ export default function ServicesPage() {
   const shouldReduceMotion = useReducedMotion()
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   }
 
@@ -28,8 +28,9 @@ export default function ServicesPage() {
             {/* Main Title */}
             <motion.h1
               className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground uppercase tracking-tight"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 30 }}
+              whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
               transition={baseTransition}
             >
               SERVICES
@@ -38,11 +39,19 @@ export default function ServicesPage() {
             {/* Current Challenge Section */}
             <motion.section
               className="mb-16"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.1 }}
+              initial={shouldReduceMotion ? undefined : itemVariants.hidden}
+              whileInView={shouldReduceMotion ? undefined : itemVariants.visible}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={baseTransition}
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">Current Challenge</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">Current Challenge</h2>
+              <motion.div
+                className="h-1 w-20 rounded-full bg-gradient-to-r from-primary to-emerald-400 mb-6"
+                initial={shouldReduceMotion ? undefined : { scaleX: 0, opacity: 0 }}
+                whileInView={shouldReduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Non – Compliance in Hazardous Waste Disposal. Evident in Hazardous Waste found in General Waste
                 Landfill sites and the persistent illegal dumping detrimental to humans, animals, and the ecosystem.
@@ -52,11 +61,19 @@ export default function ServicesPage() {
             {/* Hazardous Waste Specialists Section */}
             <motion.section
               className="mb-16"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.2 }}
+              initial={shouldReduceMotion ? undefined : itemVariants.hidden}
+              whileInView={shouldReduceMotion ? undefined : itemVariants.visible}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={baseTransition}
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">Hazardous Waste Specialists</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">Hazardous Waste Specialists</h2>
+              <motion.div
+                className="h-1 w-24 rounded-full bg-gradient-to-r from-primary to-sky-400 mb-6"
+                initial={shouldReduceMotion ? undefined : { scaleX: 0, opacity: 0 }}
+                whileInView={shouldReduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Our team understands the nature and characteristics of hazardous waste. We often find that poor
                 decisions are made about waste disposal due to businesses lacking the appropriate information,
@@ -67,13 +84,27 @@ export default function ServicesPage() {
             {/* Practical Solutions Section */}
             <motion.section
               className="mb-16"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.3 }}
+              initial={shouldReduceMotion ? undefined : itemVariants.hidden}
+              whileInView={shouldReduceMotion ? undefined : itemVariants.visible}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={baseTransition}
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">PRACTICAL SOLUTIONS:</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">PRACTICAL SOLUTIONS:</h2>
+              <motion.div
+                className="h-1 w-28 rounded-full bg-gradient-to-r from-primary to-lime-400 mb-6"
+                initial={shouldReduceMotion ? undefined : { scaleX: 0, opacity: 0 }}
+                whileInView={shouldReduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
               <div className="space-y-4">
-                <div className="flex items-start gap-4">
+                <motion.div
+                  className="flex items-start gap-4"
+                  initial={shouldReduceMotion ? undefined : { opacity: 0, x: -20 }}
+                  whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ ...baseTransition }}
+                >
                   <div className="bg-primary text-primary-foreground p-3 rounded-full flex-shrink-0">
                     <CheckCircle2 className="h-6 w-6" />
                   </div>
@@ -83,9 +114,15 @@ export default function ServicesPage() {
                       Free assessment and characterization of Hazardous Waste.
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-start gap-4">
+                <motion.div
+                  className="flex items-start gap-4"
+                  initial={shouldReduceMotion ? undefined : { opacity: 0, x: -20 }}
+                  whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.05 }}
+                >
                   <div className="bg-primary text-primary-foreground p-3 rounded-full flex-shrink-0">
                     <CheckCircle2 className="h-6 w-6" />
                   </div>
@@ -95,9 +132,15 @@ export default function ServicesPage() {
                       Assisting waste generators with compliance through Training.
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-start gap-4">
+                <motion.div
+                  className="flex items-start gap-4"
+                  initial={shouldReduceMotion ? undefined : { opacity: 0, x: -20 }}
+                  whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.1 }}
+                >
                   <div className="bg-primary text-primary-foreground p-3 rounded-full flex-shrink-0">
                     <CheckCircle2 className="h-6 w-6" />
                   </div>
@@ -107,9 +150,15 @@ export default function ServicesPage() {
                       A platform to exchange waste by linking generators to processors.
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-start gap-4">
+                <motion.div
+                  className="flex items-start gap-4"
+                  initial={shouldReduceMotion ? undefined : { opacity: 0, x: -20 }}
+                  whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.15 }}
+                >
                   <div className="bg-primary text-primary-foreground p-3 rounded-full flex-shrink-0">
                     <CheckCircle2 className="h-6 w-6" />
                   </div>
@@ -119,18 +168,26 @@ export default function ServicesPage() {
                       Advisory service on treatment options, reducing disposal fees and exploring reuse.
                     </p>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </motion.section>
 
             {/* Speedy Waste Collection Section */}
             <motion.section
               className="mb-16"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.4 }}
+              initial={shouldReduceMotion ? undefined : itemVariants.hidden}
+              whileInView={shouldReduceMotion ? undefined : itemVariants.visible}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={baseTransition}
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">Speedy Waste Collection</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">Speedy Waste Collection</h2>
+              <motion.div
+                className="h-1 w-28 rounded-full bg-gradient-to-r from-primary to-amber-400 mb-6"
+                initial={shouldReduceMotion ? undefined : { scaleX: 0, opacity: 0 }}
+                whileInView={shouldReduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
               <p className="text-lg text-muted-foreground leading-relaxed">
                 We promise our customers speedy collections with no delays. With Tshegofentse Hazardous Waste &amp;
                 Analytical Services, you will never be kept waiting in an unsafe, unhygienic workplace while waste
@@ -143,11 +200,19 @@ export default function ServicesPage() {
             {/* Waste Management CRM System Section */}
             <motion.section
               className="mb-16"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.5 }}
+              initial={shouldReduceMotion ? undefined : itemVariants.hidden}
+              whileInView={shouldReduceMotion ? undefined : itemVariants.visible}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={baseTransition}
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">WASTE MANAGEMENT CRM SYSTEM</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">WASTE MANAGEMENT CRM SYSTEM</h2>
+              <motion.div
+                className="h-1 w-32 rounded-full bg-gradient-to-r from-primary to-cyan-400 mb-6"
+                initial={shouldReduceMotion ? undefined : { scaleX: 0, opacity: 0 }}
+                whileInView={shouldReduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
               <p className="text-lg text-muted-foreground leading-relaxed">
                 By using CRM software, we keep our client waste records up to date, allowing us to efficiently plan
                 and schedule timeous collections and proper route planning.
@@ -157,11 +222,19 @@ export default function ServicesPage() {
             {/* Safety Emphasis Section */}
             <motion.section
               className="mb-16"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.6 }}
+              initial={shouldReduceMotion ? undefined : itemVariants.hidden}
+              whileInView={shouldReduceMotion ? undefined : itemVariants.visible}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={baseTransition}
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">Safety Emphasis</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">Safety Emphasis</h2>
+              <motion.div
+                className="h-1 w-24 rounded-full bg-gradient-to-r from-primary to-rose-400 mb-6"
+                initial={shouldReduceMotion ? undefined : { scaleX: 0, opacity: 0 }}
+                whileInView={shouldReduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
               <div className="space-y-3 mb-6">
                 <div className="border-l-4 border-primary pl-6 py-2">
                   <p className="text-muted-foreground">Waste Generator Record Management</p>
@@ -187,11 +260,19 @@ export default function ServicesPage() {
             {/* Wash Bay Effluent Section */}
             <motion.section
               className="mb-16"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.7 }}
+              initial={shouldReduceMotion ? undefined : itemVariants.hidden}
+              whileInView={shouldReduceMotion ? undefined : itemVariants.visible}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={baseTransition}
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">WASH BAY EFFLUENT</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">WASH BAY EFFLUENT</h2>
+              <motion.div
+                className="h-1 w-28 rounded-full bg-gradient-to-r from-primary to-indigo-400 mb-6"
+                initial={shouldReduceMotion ? undefined : { scaleX: 0, opacity: 0 }}
+                whileInView={shouldReduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
               <p className="text-lg text-muted-foreground leading-relaxed">
                 If you are having persistent problems with your wash bay, such as clogged sludge pits, difficulty
                 removing solids from oily water or excessive sludge removal costs, Tshegofentse Hazardous Waste &amp;
@@ -206,11 +287,19 @@ export default function ServicesPage() {
             {/* Fat and Grease Traps Section */}
             <motion.section
               className="mb-16"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.8 }}
+              initial={shouldReduceMotion ? undefined : itemVariants.hidden}
+              whileInView={shouldReduceMotion ? undefined : itemVariants.visible}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={baseTransition}
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">FAT AND GREASE TRAPS</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">FAT AND GREASE TRAPS</h2>
+              <motion.div
+                className="h-1 w-32 rounded-full bg-gradient-to-r from-primary to-yellow-400 mb-6"
+                initial={shouldReduceMotion ? undefined : { scaleX: 0, opacity: 0 }}
+                whileInView={shouldReduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Poor management and maintenance of fat and grease traps can lead to problems including sewer line
                 blockages, bad odours, high COD load to local wastewater treatment plants, unhygienic workplaces and
@@ -222,11 +311,19 @@ export default function ServicesPage() {
             {/* Onsite Waste Sorting Section */}
             <motion.section
               className="mb-16"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 0.9 }}
+              initial={shouldReduceMotion ? undefined : itemVariants.hidden}
+              whileInView={shouldReduceMotion ? undefined : itemVariants.visible}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={baseTransition}
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">ONSITE WASTE SORTING</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">ONSITE WASTE SORTING</h2>
+              <motion.div
+                className="h-1 w-32 rounded-full bg-gradient-to-r from-primary to-emerald-400 mb-6"
+                initial={shouldReduceMotion ? undefined : { scaleX: 0, opacity: 0 }}
+                whileInView={shouldReduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Many industries face the daily challenge of waste buildup and are uncertain how to dispose of it in an
                 environmentally friendly way. By implementing a site plan and improving your site layout for waste
@@ -239,11 +336,19 @@ export default function ServicesPage() {
             {/* Training Section */}
             <motion.section
               className="mb-16"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ ...baseTransition, delay: shouldReduceMotion ? 0 : 1.0 }}
+              initial={shouldReduceMotion ? undefined : itemVariants.hidden}
+              whileInView={shouldReduceMotion ? undefined : itemVariants.visible}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={baseTransition}
             >
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">Training</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">Training</h2>
+              <motion.div
+                className="h-1 w-24 rounded-full bg-gradient-to-r from-primary to-fuchsia-400 mb-6"
+                initial={shouldReduceMotion ? undefined : { scaleX: 0, opacity: 0 }}
+                whileInView={shouldReduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Students at the Tshegofentse Training Academy are trained for practical jobs that have a significant
                 positive effect on the environment. With this initiative, we can share our knowledge and skills so

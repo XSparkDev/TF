@@ -5,9 +5,8 @@ import { ServicesSectionNew } from "@/components/services-section-new"
 import { IndustriesSectionNew } from "@/components/industries-section-new"
 import { CircularProcessFlow } from "@/components/circular-process-flow"
 import { SafetySection } from "@/components/safety-section"
-import { HazardSymbolsSection } from "@/components/hazard-symbols-section"
+import { ValueAddedServices } from "@/components/value-added-services"
 import { ComplianceSection } from "@/components/compliance-section"
-import { SafetyEmphasisSection } from "@/components/safety-emphasis-section"
 import { StepwiseProcess } from "@/components/stepwise-process"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
@@ -23,9 +22,8 @@ export default function Home() {
       <IndustriesSectionNew />
       <CircularProcessFlow />
       <SafetySection />
-      <HazardSymbolsSection />
+      <ValueAddedServices />
       <ComplianceSection />
-      <SafetyEmphasisSection />
       <ContactSection />
       <Footer />
     </main>
