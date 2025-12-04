@@ -73,7 +73,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       />
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 pr-20 pb-20">
         <motion.h3
           className={`text-3xl md:text-4xl font-bold mb-6 ${service.textColor}`}
           initial={{ opacity: 0, x: -20 }}
@@ -94,7 +94,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
         {/* Decorative Corner Element */}
         <motion.div
-          className={`absolute bottom-4 right-4 w-16 h-16 border-4 ${service.textColor} opacity-20 group-hover:opacity-40`}
+          className={`absolute bottom-6 right-6 w-16 h-16 border-4 ${service.textColor} opacity-20 group-hover:opacity-40`}
           style={{
             borderTop: "none",
             borderLeft: "none",
@@ -152,4 +152,5 @@ export function ValueAddedServices() {
     </section>
   )
 }
+
 

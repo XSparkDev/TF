@@ -9,6 +9,7 @@ import { ValueAddedServices } from "@/components/value-added-services"
 import { ComplianceSection } from "@/components/compliance-section"
 import { StepwiseProcess } from "@/components/stepwise-process"
 import { ContactSection } from "@/components/contact-section"
+import { InteractiveMap } from "@/components/interactive-map"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
       <ValueAddedServices />
       <ComplianceSection />
       <ContactSection />
+      <InteractiveMap />
       <Footer />
     </main>
   )

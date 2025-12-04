@@ -185,11 +185,17 @@ function Diamond({ hazard, isHovered, onHover, onLeave }: DiamondProps) {
             }}
           >
             <div
-              className="text-white font-bold text-center px-4 text-base leading-tight max-w-[100px]"
+              className="text-white font-bold text-center px-4 text-base leading-tight"
               style={{
                 transform: "rotate(-45deg)",
                 writingMode: "horizontal-tb",
                 textOrientation: "upright",
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                margin: "0 auto",
               }}
             >
               {hazard.name}
