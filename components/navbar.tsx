@@ -1,9 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Phone, Clock, Menu, X } from "lucide-react"
+import { Phone, Clock, Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -12,11 +12,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const [isServicesExpanded, setIsServicesExpanded] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
@@ -30,10 +37,16 @@ export function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
+    { name: "Lab", href: "/laboratory" },
+    { name: "Training", href: "/training" },
+    { name: "Industries", href: "/industries" },
+    { name: "Contacts", href: "/#contact" },
+  ]
+
+  const servicesSubItems = [
     { name: "Services", href: "/services" },
     { name: "Library", href: "/library" },
     { name: "Gallery", href: "/industries" },
-    { name: "Contacts", href: "/#contact" },
   ]
 
   return (
@@ -56,14 +69,36 @@ export function Navbar() {
 
           {/* Navigation Links - Desktop */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-8 flex-1 justify-center px-2 lg:px-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase tracking-wide whitespace-nowrap"
-              >
-                {link.name}
-              </Link>
+            {navLinks.map((link, index) => (
+              <React.Fragment key={link.name}>
+                <Link
+                  href={link.href}
+                  className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase tracking-wide whitespace-nowrap"
+                >
+                  {link.name}
+                </Link>
+                {index === 0 && isMounted && (
+                  /* Services Dropdown */
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase tracking-wide whitespace-nowrap flex items-center gap-1 outline-none">
+                      Services
+                      <ChevronDown className="h-4 w-4" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="min-w-[150px] bg-white">
+                      {servicesSubItems.map((item) => (
+                        <DropdownMenuItem key={item.name} asChild>
+                          <Link
+                            href={item.href}
+                            className="w-full cursor-pointer uppercase tracking-wide"
+                          >
+                            {item.name}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                )}
+              </React.Fragment>
             ))}
           </div>
 
@@ -84,15 +119,47 @@ export function Navbar() {
                     <SheetTitle className="text-left text-xl font-bold text-foreground">Menu</SheetTitle>
                   </SheetHeader>
                   <nav className="flex flex-col flex-1 px-6 pt-4 pb-4">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.name}
-                        href={link.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="text-base font-semibold text-foreground hover:text-primary transition-colors uppercase tracking-wide py-3 border-b border-border/30 last:border-b-0 active:bg-muted/50"
-                      >
-                        {link.name}
-                      </Link>
+                    {navLinks.map((link, index) => (
+                      <React.Fragment key={link.name}>
+                        <Link
+                          href={link.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="text-base font-semibold text-foreground hover:text-primary transition-colors uppercase tracking-wide py-3 border-b border-border/30 last:border-b-0 active:bg-muted/50"
+                        >
+                          {link.name}
+                        </Link>
+                        {index === 0 && (
+                          /* Services with Sub-items - Mobile */
+                          <div className="border-b border-border/30">
+                            <button
+                              onClick={() => setIsServicesExpanded(!isServicesExpanded)}
+                              className="w-full text-base font-semibold text-foreground hover:text-primary transition-colors uppercase tracking-wide py-3 flex items-center justify-between active:bg-muted/50"
+                            >
+                              Services
+                              <ChevronDown
+                                className={`h-4 w-4 transition-transform ${isServicesExpanded ? "rotate-180" : ""}`}
+                              />
+                            </button>
+                            {isServicesExpanded && (
+                              <div className="pl-4 pb-2">
+                                {servicesSubItems.map((item) => (
+                                  <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    onClick={() => {
+                                      setIsMobileMenuOpen(false)
+                                      setIsServicesExpanded(false)
+                                    }}
+                                    className="block text-sm font-medium text-foreground/80 hover:text-primary transition-colors uppercase tracking-wide py-2 border-b border-border/20 last:border-b-0 active:bg-muted/50"
+                                  >
+                                    {item.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </React.Fragment>
                     ))}
                   </nav>
                   
@@ -105,7 +172,7 @@ export function Navbar() {
                           <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                       </a>
-                      <a href="https://za.linkedin.com/company/tshegofentse-facilities-engineering" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors p-1.5 hover:bg-muted/50 rounded-md">
+                      <a href="https://www.linkedin.com/company/tshegofentse-facilities-engineering/?originalSubdomain=za" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors p-1.5 hover:bg-muted/50 rounded-md">
                         <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                         </svg>
@@ -144,7 +211,7 @@ export function Navbar() {
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
               </svg>
             </a>
-            <a href="https://za.linkedin.com/company/tshegofentse-facilities-engineering" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
+            <a href="https://www.linkedin.com/company/tshegofentse-facilities-engineering/?originalSubdomain=za" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
