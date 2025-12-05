@@ -12,10 +12,8 @@ export default function AboutPage() {
 
       <motion.section
         className="py-20 md:py-24"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
@@ -23,8 +21,7 @@ export default function AboutPage() {
             <motion.h1
               className="text-3xl md:text-4xl font-bold mb-4 text-center text-foreground uppercase tracking-tight"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.6 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
               ABOUT US
@@ -32,26 +29,23 @@ export default function AboutPage() {
             <motion.div
               className="mx-auto mb-12 h-1 w-24 rounded-full bg-gradient-to-r from-primary via-emerald-400 to-sky-400"
               initial={{ scaleX: 0, opacity: 0 }}
-              whileInView={{ scaleX: 1, opacity: 1 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
             />
 
             {/* Why Choose Us Section */}
             <motion.div
               className="mb-16"
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
             >
               <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">Why Choose Us?</h2>
               <motion.div
                 className="h-1 w-20 rounded-full bg-gradient-to-r from-primary to-emerald-400 mb-6"
                 initial={{ scaleX: 0, opacity: 0 }}
-                whileInView={{ scaleX: 1, opacity: 1 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
               />
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                 At Tshegofentse Hazardous Waste &amp; Analytical Services, we take an innovative approach to waste management solutions. By evaluating options for reuse and recycling, we aim to reduce waste going to landfill. We offer environmentally friendly and green methods for managing waste while reducing pollution. Using legal and effective disposal technologies suitable for the waste types collected, we constantly seek to recover and extract value from waste. Using green waste management practices, we prevent and reduce pollution. We offer this innovative approach in a systematic way:

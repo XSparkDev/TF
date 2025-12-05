@@ -22,15 +22,18 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-background">
       <Navbar />
       
-      <section className="py-20 md:py-24">
+      <motion.section 
+        className="py-20 md:py-24"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+      >
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             {/* Main Title */}
             <motion.h1
               className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground uppercase tracking-tight"
               initial={shouldReduceMotion ? undefined : { opacity: 0, y: 30 }}
-              whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.6 }}
+              animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
               transition={baseTransition}
             >
               SERVICES
@@ -375,7 +378,7 @@ export default function ServicesPage() {
             </motion.section>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <Footer />
     </main>
