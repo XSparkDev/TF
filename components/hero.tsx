@@ -66,11 +66,11 @@ export function Hero() {
   const currentDuration = currentSlide.durationMs
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % HERO_SLIDES.length)
+    setCurrentIndex((prev: number) => (prev + 1) % HERO_SLIDES.length)
   }
 
   const goToPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
+    setCurrentIndex((prev: number) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
   }
 
   useEffect(() => {
