@@ -1,9 +1,7 @@
-services:
-  - type: web
-    name: tshegofentse-website
-    env: node
+static_sites:
+  - name: tshegofentse-website
     buildCommand: npm install && npm run build
-    startCommand: npm start
+    staticPublishPath: ./out
     envVars:
       - key: NODE_ENV
         value: production
